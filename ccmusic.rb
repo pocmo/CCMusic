@@ -32,6 +32,11 @@ db    = Mongo::Connection.new(host, port).db(database);
 feeds = db.collection("feeds")
 files = db.collection("files")
 
+# Default options
+options = {
+  :ignore_broken => false
+}
+
 optparse = OptionParser.new do |opts|
   opts.banner = "Usage: ccmusic.rb [options]"
 
@@ -59,6 +64,10 @@ optparse = OptionParser.new do |opts|
     files.insert({"hash" => id})
     puts "Now ignoring download #{id}"
     exit
+  end
+
+  opts.on("", "--ignore-broken-files", "Ignore the id of broken files") do |id|
+    options[:ignore_broken] = true
   end
 
   opts.on("-h", "--help", "Display this screen") do
@@ -94,7 +103,12 @@ feeds.find().each { |feed|
         tag = ID3Lib::Tag.new(temp_file)
         
         if tag.artist.nil? || tag.title.nil? || tag.artist.empty? || tag.title.empty?
-          puts "Broken ID3 Tags".red
+          if options[:ignore_broken]
+            puts "Broken File. Ignoring. (#{hash})".red
+            files.insert({"hash" => hash})
+          else
+            puts "Broken ID3 Tags (#{hash})".red
+          end
           puts
           next
         end
