@@ -15,6 +15,11 @@ Example usage:
 Add the last.fm feed for metal:
   ./ccmusic.rb -a http://ws.audioscrobbler.com/2.0/tag/metal/podcast.rss
 
+Add the "What's HOT right now?" Feed from CCMixter
+  ./ccmusic.rb -a http://ccmixter.org/api/query?f=rss&tags=remix,-digital_distortion&sort=rank&sinced=1%20week%20ago&limit=12
+
+Go on and add feeds of music you like...
+
 List all feeds
   ./ccmusic.rb -l
 
