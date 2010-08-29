@@ -1,0 +1,25 @@
+CCMusic - Downloader for free and creative commons music
+
+Queries regulary your favorite music podcasts for new songs.
+
+Requirements:
+ - Ruby
+ - A lot of ruby gems, take a look at ccmusic.rb
+ - MongoDB (Here we will store information about what we've already downloaded)
+
+After you've installed everything go to ccmusic.conf and take a look at the default
+values and change them if needed.
+
+Example usage:
+
+Add the last.fm feed for metal:
+  ./ccmusic.rb -a http://ws.audioscrobbler.com/2.0/tag/metal/podcast.rss
+
+List all feeds
+  ./ccmusic.rb -l
+
+Now let's go and download all files we don't own already
+  ./ccmusic
+
+That's it. For more options take a look at:
+  ./ccmusic --help
