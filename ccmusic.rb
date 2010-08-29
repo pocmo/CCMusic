@@ -56,7 +56,7 @@ optparse = OptionParser.new do |opts|
   end
 
   opts.on("-i", "--ignore ID", "Ignore this download id") do |id|
-    files.insert({hash => id})
+    files.insert({"hash" => id})
     puts "No ignoring download #{id}"
     exit
   end
