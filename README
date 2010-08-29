@@ -18,7 +18,8 @@ Add the last.fm feed for metal:
 Add the "What's HOT right now?" Feed from CCMixter
   ./ccmusic.rb -a http://ccmixter.org/api/query?f=rss&tags=remix,-digital_distortion&sort=rank&sinced=1%20week%20ago&limit=12
 
-Go on and add feeds of music you like...
+Go on and add feeds of music you like... Maybe take a look here:
+http://wiki.creativecommons.org/Music_Podcasts#Single_song_at_a_time_podcasts
 
 List all feeds
   ./ccmusic.rb -l
