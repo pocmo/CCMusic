@@ -117,7 +117,10 @@ feeds.find().each { |feed|
         artist = ic.iconv(tag.artist + ' ')[0..-2]
         title  = ic.iconv(tag.title + ' ')[0..-2]
 
-        puts "  #{artist} - #{title}".yellow
+        artist.gsub!('/', ' ')
+        title.gsub!('/', ' ')
+
+        puts "#{artist} - #{title}".yellow
 
         tag.album = config.get_value("tags")["album"]
         tag.update!
