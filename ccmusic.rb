@@ -41,6 +41,12 @@ optparse = OptionParser.new do |opts|
     exit
   end
 
+  opts.on("-r", "--remove-feed FEED", "Remove feed from database") do |feed|
+    feeds.remove({"url" => feed})
+    puts "Removed feed #{feed}"
+    exit
+  end
+
   opts.on("-l", "--list-feeds", "List existing feeds") do
     feeds.find().each { |feed|
       print feed["_id"].to_s.green
@@ -104,6 +110,7 @@ feeds.find().each { |feed|
 
         folder = "#{download_folder}/#{artist}"
         file   = "#{artist} - #{title}.mp3"
+        
         if !File.exists? folder
           File.makedirs folder
         end
@@ -112,7 +119,13 @@ feeds.find().each { |feed|
         File.copy temp_file, new_file
         puts
 
-        files.insert({"hash" => hash, "file" => new_file, "timestamp" => Time.new.to_s, "artist" => artist, "album" => title})
+        files.insert({
+          "hash"      => hash,
+          "file"      => new_file,
+          "timestamp" => Time.new.to_s,
+          "artist"    => artist,
+          "album"     => title
+        })
       end
     }
   }
