@@ -88,7 +88,7 @@ feeds.find().each { |feed|
   i += 1
 
   FeedParser.parse(feed["url"]).entries.each { |entry|
-    entry.enclosures.each { |enclosure|
+    !entry.enclosures.nil? && entry.enclosures.each { |enclosure|
       url = enclosure.href
       hash = Digest::SHA1.hexdigest(url)
 
