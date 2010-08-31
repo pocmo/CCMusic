@@ -83,6 +83,8 @@ puts "#{count} feed(s) to consider"
 puts
 
 i = 1
+songs = 0
+
 feeds.find().each { |feed|
   puts "#{i}/#{count} - #{feed["url"]}".blue
   i += 1
@@ -143,6 +145,8 @@ feeds.find().each { |feed|
           "artist"    => artist,
           "album"     => title
         })
+
+        songs += 1
       end
     }
   }
@@ -150,3 +154,4 @@ feeds.find().each { |feed|
   puts
 }
 
+puts "Downloaded #{songs} new songs"
