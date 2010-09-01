@@ -158,3 +158,4 @@ feeds.find().each { |feed|
 
 puts "Downloaded #{songs.length > 0 ? songs.length.to_s.green : songs.length.to_s.red} new songs"
 songs.each { |song| puts "  #{song}".yellow }
+puts
