@@ -128,7 +128,9 @@ feeds.find().each { |feed|
         tag.update!
 
         folder = "#{download_folder}/#{artist}"
-        file   = "#{artist} - #{title}.mp3"
+        file   = "#{artist} - #{title}"
+        file.slice! 0..200
+        file += ".mp3"
         
         if !File.exists? folder
           File.makedirs folder
