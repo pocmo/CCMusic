@@ -156,5 +156,5 @@ feeds.find().each { |feed|
   puts
 }
 
-puts "Downloaded #{songs.length} new songs"
-songs.each { |song| puts "  #{song}" }
+puts "Downloaded #{songs.length > 0 ? songs.length.to_s.green : songs.length.to_s.red} new songs"
+songs.each { |song| puts "  #{song}".yellow }
